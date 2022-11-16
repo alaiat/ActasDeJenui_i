@@ -24,11 +24,14 @@ async function getJs(name){
     name = name.join('/')
     fetch(`http://ikasten.io:3000/${name}`).then(r=>r.text())
     .then(r=> {
-        console.log(r)
+        //console.log(r)
         console.log(name.split('/')[5])
-        let f = new File(name.split('/')[5].split('.')[0],'a')
-        
-        f.writeFile(r)
+        //let f = new File(name.split('/')[5].split('.')[0],'a')
+        var f = new File([r], name.split('/')[5])
+        //let f = new File("patata.js", 'a')
+
+
+       // f.writeFile(r)
     })
 }
 
