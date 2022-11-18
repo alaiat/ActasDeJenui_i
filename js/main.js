@@ -24,11 +24,11 @@ async function getJs(name){
     name = name.join('/')
     fetch(`http://ikasten.io:3000/${name}`).then(r=>r.text())
     .then(r=> {
-        console.log(r)
+        //console.log(r)
         console.log(name.split('/')[5])
-        let f = new File(name.split('/')[5].split('.')[0],'a')
-        
-        f.writeFile(r)
+        let f = new File([r] ,`importedJs/${name.split('/')[5]}`)
+        f.text().then(r=> console.log(r))
+        //f.writeFile(r)
     })
 }
 
