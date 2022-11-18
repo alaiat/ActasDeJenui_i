@@ -26,9 +26,9 @@ async function getJs(name){
     .then(r=> {
         //console.log(r)
         console.log(name.split('/')[5])
-        let f = new File([r] ,`importedJs/${name.split('/')[5]}`)
-        f.text().then(r=> console.log(r))
-        //f.writeFile(r)
+        let f = new File([r], name.split('/')[5],'a')
+        
+        f.writeFile(r)
     })
 }
 
