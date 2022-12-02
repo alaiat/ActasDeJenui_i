@@ -20,15 +20,18 @@ async function getInitialHTML(){
     return a;
 }
 
-async function getJs(name){
-    name = name.split('/')
-    name[2] = mainURL
-    name = name.join('/')
-    fetch(`http://ikasten.io:3000/${name}`).then(r=>r.text())
-    .then(r=> {
-        let script = document.createElement('script')
-        script.innerHTML=r
-        document.head.appendChild(script)
+async function getAllJs(){
+    document.querySelectorAll("script").forEach(async elem => {
+        let name = elem.src
+        name = name.split("/")
+        name[2] = mainURL
+        name = name.join('/')
+        await fetch(`http://ikasten.io:3000/${name}`).then(r=>r.text())
+        .then(r=> {
+            let script = document.createElement('script')
+            script.innerHTML=r
+            document.head.appendChild(script)
+        })
     })
 }
 
@@ -36,8 +39,7 @@ let hasieratu = async function (e) {
     let html= await getInitialHTML();
     console.log(html);
     document.querySelector("img[src='img/logoAenui.png']").src="https://aenui.org/actas/img/logoAenui.png"
-    document.querySelectorAll("script").forEach(elem => getJs(elem.src))
-    iniciarTemasBusqueda()
+    getAllJs().then(r => inicializar())
 }
 
 
