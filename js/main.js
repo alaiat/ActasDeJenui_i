@@ -1,3 +1,5 @@
+ 
+
 const mainURL = 'aenui.org/actas'
 
 async function getInitialHTML(){
@@ -24,11 +26,9 @@ async function getJs(name){
     name = name.join('/')
     fetch(`http://ikasten.io:3000/${name}`).then(r=>r.text())
     .then(r=> {
-        //console.log(r)
-        console.log(name.split('/')[5])
-        let f = new File([r], name.split('/')[5],'a')
-        
-        f.writeFile(r)
+        let script = document.createElement('script')
+        script.innerHTML=r
+        document.head.appendChild(script)
     })
 }
 
@@ -37,7 +37,7 @@ let hasieratu = async function (e) {
     console.log(html);
     document.querySelector("img[src='img/logoAenui.png']").src="https://aenui.org/actas/img/logoAenui.png"
     document.querySelectorAll("script").forEach(elem => getJs(elem.src))
-
+    iniciarTemasBusqueda()
 }
 
 
