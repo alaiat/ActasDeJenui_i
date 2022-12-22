@@ -65,6 +65,7 @@ let hasieratu = async function (e) {
     getAllJs(Array.from(scripts))
     //.then(r => inicializar())
     centerTitle()
+    addNav()
 }
 
 function centerTitle(){
@@ -98,5 +99,26 @@ function centerTitle(){
     document.getElementById("caxaBuscar").setAttribute("class", "form-control")
 }
 
+function addNav(){
+    let topMargin = document.createElement("style")
+    topMargin.innerHTML= "body {padding-top: 60px;}"
+    document.head.appendChild(topMargin)
+    let navBar = document.createElement("header")
+    navBar.setAttribute("class", "navbar navbar-light bg-primary fixed-top navbar-default")
+
+    let edicionesButton = document.createElement("button")
+    edicionesButton.setAttribute("class", "btn btn-light")
+    edicionesButton.setAttribute("type", "button")
+    edicionesButton.innerHTML = "Ediciones"
+    edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
+
+    let containerNav = document.createElement("div")
+    containerNav.setAttribute("class", "container")
+    containerNav.appendChild(edicionesButton)
+    navBar.appendChild(containerNav)
+    document.body.appendChild(navBar)
+    document.getElementsByClassName("botonEdiciones").item(0).remove()
+    
+}
 
 window.onload=hasieratu;
