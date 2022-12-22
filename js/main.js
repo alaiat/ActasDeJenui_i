@@ -112,7 +112,7 @@ function addNav(){
     edicionesButton.setAttribute("type", "button")
     edicionesButton.innerHTML = "Ediciones"
     edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
-    edicionesButton.setAttribute("style", "background-color: #F14F11")
+    edicionesButton.setAttribute("style", "background-color: #F7B529")
 
     let containerNav = document.createElement("div")
     containerNav.setAttribute("class", "container")
