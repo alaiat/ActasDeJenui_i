@@ -79,7 +79,7 @@ function centerTitle(){
     imageCol.appendChild(document.getElementById("alrodiu"))
 
     let buscadorCol = document.createElement("div")
-    buscadorCol.setAttribute("class", "col-sm-12 col-10")
+    buscadorCol.setAttribute("class", "col-sm-8 col-10 offset-1 offset-sm-0")
     let buscadorTd = buscador.children.item(0).children.item(0).children.item(0).children.item(1)
     Array.from(buscadorTd.children).forEach(elem => {
         if(elem.tagName != "input"){
@@ -87,16 +87,9 @@ function centerTitle(){
         }
         buscadorCol.appendChild(elem)
     })
-    let centerCol = document.createElement("div")
-    let centerRow = document.createElement("div")
-    centerCol.setAttribute("class", "col-sm-8 col-12")
-    centerRow.setAttribute("class", "row justify-content-center")
-    centerRow.appendChild(buscadorCol)
-    centerCol.appendChild(centerRow)
-
 
     buscadorRow.appendChild(imageCol)
-    buscadorRow.appendChild(centerCol)
+    buscadorRow.appendChild(buscadorCol)
 
     buscador.remove()
 
