@@ -53,23 +53,57 @@ let hasieratu = async function (e) {
     document.getElementById("botonesEdiciones").style = "display: none;"
     let botones = document.getElementById("botonesEdiciones").getElementsByClassName("botonEdicion")
     setTimeout(()=>{
-        console.log(Array.from(botones))
         Array.from(botones).forEach((elem)=>{
             let url = elem.children[0].src.split('/')
-            console.log(url)
             url[2] = "aenui.org"
             url.splice(3, 0, "actas")
             elem.children[0].src = url.join('/')
-            console.log(elem.children[0].src)
         })
     }, 1000)
     
     let scripts = document.querySelectorAll("script")
     getAllJs(Array.from(scripts))
     //.then(r => inicializar())
+    centerTitle()
 }
 
+function centerTitle(){
+    let buscador = document.getElementById("buscaor")
 
+    let buscadorRow = document.createElement("div")
+    buscadorRow.setAttribute("class", "row")
+
+    let imageCol = document.createElement("div")
+    imageCol.setAttribute("class", "col-sm-2 col-12")
+    document.getElementById("alrodiu").setAttribute("class", "d-flex justify-content-center justify-content-sm-end")
+    imageCol.appendChild(document.getElementById("alrodiu"))
+
+    let buscadorCol = document.createElement("div")
+    buscadorCol.setAttribute("class", "col-sm-12 col-10")
+    let buscadorTd = buscador.children.item(0).children.item(0).children.item(0).children.item(1)
+    Array.from(buscadorTd.children).forEach(elem => {
+        if(elem.tagName != "input"){
+            elem.setAttribute("class", "text-center")
+        }
+        buscadorCol.appendChild(elem)
+    })
+    let centerCol = document.createElement("div")
+    let centerRow = document.createElement("div")
+    centerCol.setAttribute("class", "col-sm-8 col-12")
+    centerRow.setAttribute("class", "row justify-content-center")
+    centerRow.appendChild(buscadorCol)
+    centerCol.appendChild(centerRow)
+
+
+    buscadorRow.appendChild(imageCol)
+    buscadorRow.appendChild(centerCol)
+
+    buscador.remove()
+
+    document.body.appendChild(buscadorRow)
+
+    document.getElementById("caxaBuscar").setAttribute("class", "form-control")
+}
 
 
 window.onload=hasieratu;
