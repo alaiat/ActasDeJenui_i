@@ -41,7 +41,7 @@ async function getAllJs(scripts){
             console.log(r)
             
             r = r.replace('\x69\x66\x20\x28\x69\x74\x65\x6D\x2E\x69\x6E\x64\x65\x78\x4F\x66\x28\x73\x74\x72\x29\x20\x21\x3D\x20\x2D\x31\x29\x0A\x09\x09\x09\x09\x6C\x6C\x69\x73\x74\x61\x2E\x70\x75\x73\x68\x28\x69\x29\x3B',
-            'titulo = true; autor=true; palabras = true; addToList = false; if(titulo && item.titulo.indexOf(str) != -1){addToList = true;} if(autor && item.autor.indexOf(str) != -1){addToList = true;} if(palabras && item.palabras.indexOf(str) != -1){addToList = true;} if(addToList){llista.push(i);}')
+            'titulo = document.getElementById("checkbox3").checked; autor=document.getElementById("checkbox1").checked; palabras = document.getElementById("checkbox2").checked; if(!titulo && !autor && !palabras){titulo = true; autor = true; palabras = true;} addToList = false; if(titulo && item.titulo.indexOf(str) != -1){addToList = true;} if(autor && item.autor.indexOf(str) != -1){addToList = true;} if(palabras && item.palabras.indexOf(str) != -1){addToList = true;} if(addToList){llista.push(i);}')
         }
         script.innerHTML=r
         document.head.appendChild(script)
@@ -156,44 +156,59 @@ function addNav(){
     
 }
 
+//Activa otra vez el amosar resultados para actualizar busqueda cuando cambias los filtros
+function reSerch(){
+    amosarResultaosPorTestu(document.getElementById("caxaBuscar").value, false)
+}
+
 function addFiltros() {
 
     let checkbox1 = document.createElement("input")
     checkbox1.setAttribute("type", "checkbox")
     checkbox1.setAttribute("class", "form-check-input")
     checkbox1.setAttribute("id", "checkbox1")
+    checkbox1.setAttribute("style", "margin-right: 3px")
+    checkbox1.onclick = reSerch
   
     let label1 = document.createElement("label")
     label1.setAttribute("class", "form-check-label")
     label1.setAttribute("for", "checkbox1")
+    label1.setAttribute("style", "margin-right: 12px")
     label1.innerHTML = "Autoreak"
   
     let checkbox2 = document.createElement("input")
     checkbox2.setAttribute("type", "checkbox")
     checkbox2.setAttribute("class", "form-check-input")
     checkbox2.setAttribute("id", "checkbox2")
+    checkbox2.setAttribute("style", "margin-right: 3px")
+    checkbox2.onclick = reSerch
   
     let label2 = document.createElement("label")
     label2.setAttribute("class", "form-check-label")
     label2.setAttribute("for", "checkbox2")
+    label2.setAttribute("style", "margin-right: 12px")
     label2.innerHTML = "Hitz Klabeak"
   
     let checkbox3 = document.createElement("input")
     checkbox3.setAttribute("type", "checkbox")
     checkbox3.setAttribute("class", "form-check-input")
     checkbox3.setAttribute("id", "checkbox3")
+    checkbox3.setAttribute("style", "margin-right: 3px")
+    checkbox3.onclick = reSerch
   
     let label3 = document.createElement("label")
     label3.setAttribute("class", "form-check-label")
     label3.setAttribute("for", "checkbox3")
+    label3.setAttribute("style", "margin-right: 12px")
     label3.innerHTML = "Tituluak"
   
-    document.body.appendChild(checkbox1)
-    document.body.appendChild(label1)
-    document.body.appendChild(checkbox2)
-    document.body.appendChild(label2)
-    document.body.appendChild(checkbox3)
-    document.body.appendChild(label3)
+    let buscadorCol = document.getElementById("buscadorCol")
+    buscadorCol.appendChild(checkbox1)
+    buscadorCol.appendChild(label1)
+    buscadorCol.appendChild(checkbox2)
+    buscadorCol.appendChild(label2)
+    buscadorCol.appendChild(checkbox3)
+    buscadorCol.appendChild(label3)
   }
 
 window.onload=hasieratu;
