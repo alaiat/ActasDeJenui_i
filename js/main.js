@@ -89,6 +89,7 @@ function centerTitle(){
 
     let buscadorCol = document.createElement("div")
     buscadorCol.setAttribute("class", "col-sm-8 col-10 offset-1 offset-sm-0")
+    buscadorCol.setAttribute("id", "buscadorCol")
     let buscadorTd = buscador.children.item(0).children.item(0).children.item(0).children.item(1)
     Array.from(buscadorTd.children).forEach(elem => {
         if(elem.tagName != "input"){
