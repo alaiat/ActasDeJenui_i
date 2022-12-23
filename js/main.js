@@ -113,35 +113,42 @@ function addNav(){
     document.head.appendChild(topMargin)
     let navBar = document.createElement("header")
     navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default")
-    //navBar.setAttribute("style", 'background-color: #008DD5;')
+    navBar.setAttribute("style", 'background-color: #008DD5;')
 
     let edicionesButton = document.createElement("button")
+    let edicionesCol = document.createElement("div")
     edicionesButton.setAttribute("class", "btn btn-outline-dark")
     edicionesButton.setAttribute("type", "button")
     edicionesButton.innerHTML = "Ediciones"
     edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
     edicionesButton.setAttribute("style", "background-color: #F7B529")
+    edicionesCol.setAttribute("class", "col")
 
     let loginButton = document.createElement("button")
-    loginButton.setAttribute("class", "btn btn-light")
+    let loginRegisterCol = document.createElement("div")
+    loginButton.setAttribute("class", "btn btn-outline-dark me-end")
     loginButton.setAttribute("type", "button")
     loginButton.innerHTML = "Login"
     loginButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
-    //loginButton.style.marginLeft = "auto"
-    //loginButton.style.marginRight = "10px"
+    loginButton.setAttribute("style", "background-color: #F7B529; margin-right: 6px;")
 
 
-    let RegisterButton = document.createElement("button")
-    RegisterButton.setAttribute("class", "btn btn-dark")
-    RegisterButton.setAttribute("type", "button")
-    RegisterButton.innerHTML = "Register"
-    RegisterButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
+    let registerButton = document.createElement("button")
+    registerButton.setAttribute("class", "btn btn-outline-dark me-end")
+    registerButton.setAttribute("type", "button")
+    registerButton.innerHTML = "Register"
+    registerButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
+    registerButton.setAttribute("style", "background-color: #F7B529")
+
+    loginRegisterCol.setAttribute("class", "col text-end")
 
     let containerNav = document.createElement("div")
-    containerNav.setAttribute("class", "container")
-    //containerNav.appendChild(edicionesButton)
-    containerNav.appendChild(loginButton)
-    containerNav.appendChild(RegisterButton)
+    containerNav.setAttribute("class", "container-fluid")
+    edicionesCol.appendChild(edicionesButton)
+    containerNav.appendChild(edicionesCol)
+    loginRegisterCol.appendChild(loginButton)
+    loginRegisterCol.appendChild(registerButton)
+    containerNav.appendChild(loginRegisterCol)
     navBar.appendChild(containerNav)
     document.body.appendChild(navBar)
     document.getElementsByClassName("botonEdiciones").item(0).remove()
@@ -187,31 +194,5 @@ function addFiltros() {
     document.body.appendChild(checkbox3)
     document.body.appendChild(label3)
   }
-  
-  
-  
-function addNav(){
-    let topMargin = document.createElement("style")
-    topMargin.innerHTML= "body {padding-top: 60px;}"
-    document.head.appendChild(topMargin)
-    let navBar = document.createElement("header")
-    navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default")
-    navBar.setAttribute("style", 'background-color: #008DD5;')
-
-    let edicionesButton = document.createElement("button")
-    edicionesButton.setAttribute("class", "btn btn-outline-dark")
-    edicionesButton.setAttribute("type", "button")
-    edicionesButton.innerHTML = "Ediciones"
-    edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
-    edicionesButton.setAttribute("style", "background-color: #F7B529")
-
-    let containerNav = document.createElement("div")
-    containerNav.setAttribute("class", "container")
-    containerNav.appendChild(edicionesButton)
-    navBar.appendChild(containerNav)
-    document.body.appendChild(navBar)
-    document.getElementsByClassName("botonEdiciones").item(0).remove()
-    
-}
 
 window.onload=hasieratu;
