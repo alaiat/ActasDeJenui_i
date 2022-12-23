@@ -108,7 +108,10 @@ function centerTitle(){
 
     buscador.remove()
 
-    document.body.appendChild(buscadorRow)
+    let buscadorContainer = document.createElement("div")
+    buscadorContainer.setAttribute("class", "container-fluid")
+    buscadorContainer.appendChild(buscadorRow)
+    document.body.appendChild(buscadorContainer)
 
     document.getElementById("caxaBuscar").setAttribute("class", "form-control")
 }
