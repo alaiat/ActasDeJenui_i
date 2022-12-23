@@ -66,6 +66,7 @@ let hasieratu = async function (e) {
     //.then(r => inicializar())
     centerTitle()
     addNav()
+    addFiltros()
 }
 
 function centerTitle(){
@@ -112,13 +113,73 @@ function addNav(){
     edicionesButton.innerHTML = "Ediciones"
     edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
 
+    let loginButton = document.createElement("button")
+    loginButton.setAttribute("class", "btn btn-light")
+    loginButton.setAttribute("type", "button")
+    loginButton.innerHTML = "Login"
+    loginButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
+    loginButton.style.marginLeft = "auto"
+    loginButton.style.marginRight = "10px"
+
+
+    let RegisterButton = document.createElement("button")
+    RegisterButton.setAttribute("class", "btn btn-light")
+    RegisterButton.setAttribute("type", "button")
+    RegisterButton.innerHTML = "Register"
+    RegisterButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
+
     let containerNav = document.createElement("div")
     containerNav.setAttribute("class", "container")
     containerNav.appendChild(edicionesButton)
+    containerNav.appendChild(loginButton)
+    containerNav.appendChild(RegisterButton)
     navBar.appendChild(containerNav)
     document.body.appendChild(navBar)
     document.getElementsByClassName("botonEdiciones").item(0).remove()
     
 }
+
+function addFiltros() {
+
+    let checkbox1 = document.createElement("input")
+    checkbox1.setAttribute("type", "checkbox")
+    checkbox1.setAttribute("class", "form-check-input")
+    checkbox1.setAttribute("id", "checkbox1")
+  
+    let label1 = document.createElement("label")
+    label1.setAttribute("class", "form-check-label")
+    label1.setAttribute("for", "checkbox1")
+    label1.innerHTML = "Autoreak"
+  
+    let checkbox2 = document.createElement("input")
+    checkbox2.setAttribute("type", "checkbox")
+    checkbox2.setAttribute("class", "form-check-input")
+    checkbox2.setAttribute("id", "checkbox2")
+  
+    let label2 = document.createElement("label")
+    label2.setAttribute("class", "form-check-label")
+    label2.setAttribute("for", "checkbox2")
+    label2.innerHTML = "Hitz Klabeak"
+  
+    let checkbox3 = document.createElement("input")
+    checkbox3.setAttribute("type", "checkbox")
+    checkbox3.setAttribute("class", "form-check-input")
+    checkbox3.setAttribute("id", "checkbox3")
+  
+    let label3 = document.createElement("label")
+    label3.setAttribute("class", "form-check-label")
+    label3.setAttribute("for", "checkbox3")
+    label3.innerHTML = "Tituluak"
+  
+    document.body.appendChild(checkbox1)
+    document.body.appendChild(label1)
+    document.body.appendChild(checkbox2)
+    document.body.appendChild(label2)
+    document.body.appendChild(checkbox3)
+    document.body.appendChild(label3)
+  }
+  
+  
+  
 
 window.onload=hasieratu;
