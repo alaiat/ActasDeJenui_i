@@ -175,6 +175,11 @@ function addFiltros() {
     label1.setAttribute("for", "checkbox1")
     label1.setAttribute("style", "margin-right: 12px")
     label1.innerHTML = "Autoreak"
+
+    let col1 = document.createElement("div")
+    col1.setAttribute("class", "col")
+    col1.appendChild(checkbox1)
+    col1.appendChild(label1)
   
     let checkbox2 = document.createElement("input")
     checkbox2.setAttribute("type", "checkbox")
@@ -188,6 +193,11 @@ function addFiltros() {
     label2.setAttribute("for", "checkbox2")
     label2.setAttribute("style", "margin-right: 12px")
     label2.innerHTML = "Hitz Klabeak"
+
+    let col2 = document.createElement("div")
+    col2.setAttribute("class", "col")
+    col2.appendChild(checkbox2)
+    col2.appendChild(label2)
   
     let checkbox3 = document.createElement("input")
     checkbox3.setAttribute("type", "checkbox")
@@ -201,14 +211,19 @@ function addFiltros() {
     label3.setAttribute("for", "checkbox3")
     label3.setAttribute("style", "margin-right: 12px")
     label3.innerHTML = "Tituluak"
+
+    let col3 = document.createElement("div")
+    col3.setAttribute("class", "col")
+    col3.appendChild(checkbox3)
+    col3.appendChild(label3)
   
     let buscadorCol = document.getElementById("buscadorCol")
-    buscadorCol.appendChild(checkbox1)
-    buscadorCol.appendChild(label1)
-    buscadorCol.appendChild(checkbox2)
-    buscadorCol.appendChild(label2)
-    buscadorCol.appendChild(checkbox3)
-    buscadorCol.appendChild(label3)
+    let row = document.createElement("div")
+    row.setAttribute("class", "row row-cols-sm-auto row-cols-1")
+    row.appendChild(col1)
+    row.appendChild(col2)
+    row.appendChild(col3)
+    buscadorCol.appendChild(row)
   }
 
 window.onload=hasieratu;
