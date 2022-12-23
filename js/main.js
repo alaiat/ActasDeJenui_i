@@ -118,7 +118,7 @@ function centerTitle(){
 
 function addNav(){
     let style = document.createElement("style")
-    style.innerHTML= "body {padding-top: 60px;}.offcanvas-size-sm {--bs-offcanvas-width: 150px !important;} .login-button {margin-bottom: 6px; margin-right: 0px;} @media only screen and (min-width: 576px) {.login-button {margin-bottom: 0px;margin-right: 6px;}}"
+    style.innerHTML= "body {padding-top: 60px;}.offcanvas-size-sm {--bs-offcanvas-width: 150px !important;} .login-button {margin-bottom: 6px; margin-right: 0px;} @media only screen and (min-width: 576px) {.login-button {margin-bottom: 0px;margin-right: 6px;}}.bolded { font-weight: bold; }"
     document.head.appendChild(style)
     let navBar = document.createElement("header")
     navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default navbar-expand-sm")
@@ -126,7 +126,7 @@ function addNav(){
 
     let edicionesButton = document.createElement("button")
     let edicionesCol = document.createElement("div")
-    edicionesButton.setAttribute("class", "btn btn-outline-dark")
+    edicionesButton.setAttribute("class", "btn btn-outline-dark bolded")
     edicionesButton.setAttribute("type", "button")
     edicionesButton.innerHTML = "Ediciones"
     edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
@@ -135,7 +135,7 @@ function addNav(){
 
     let loginButton = document.createElement("button")
     let loginRegisterCol = document.createElement("div")
-    loginButton.setAttribute("class", "btn btn-outline-dark btn-block login-button")
+    loginButton.setAttribute("class", "btn btn-outline-dark btn-block login-button bolded")
     loginButton.setAttribute("type", "button")
     loginButton.innerHTML = "Login"
     loginButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
@@ -143,7 +143,7 @@ function addNav(){
 
 
     let registerButton = document.createElement("button")
-    registerButton.setAttribute("class", "btn btn-outline-dark")
+    registerButton.setAttribute("class", "btn btn-outline-dark bolded")
     registerButton.setAttribute("type", "button")
     registerButton.innerHTML = "Register"
     registerButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
@@ -168,7 +168,7 @@ function addNav(){
     menuBody.setAttribute("class", "offcanvas-body py-0 col justify-content-sm-end")
     menuBody.appendChild(bodyCol)
     let menuHead = document.createElement("div")
-    menuHead.setAttribute("class","offcanvas-header")
+    menuHead.setAttribute("class","offcanvas-header bolded")
     let offLabel = document.createElement("h2")
     offLabel.setAttribute("id", "offLabel")
     offLabel.setAttribute("class", "offcanvas-title")
