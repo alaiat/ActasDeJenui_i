@@ -165,7 +165,7 @@ function addNav(){
     bodyCol.appendChild(loginButton)
     bodyCol.appendChild(registerButton)
     let menuBody = document.createElement("div")
-    menuBody.setAttribute("class", "offcanvas-body py-0 row row-cols-1 justify-content-sm-end")
+    menuBody.setAttribute("class", "offcanvas-body py-0 col justify-content-sm-end")
     menuBody.appendChild(bodyCol)
     let menuHead = document.createElement("div")
     menuHead.setAttribute("class","offcanvas-header")
