@@ -12,11 +12,13 @@ async function getInitialHTML(){
         //Get the image from the index.html working
         //Add boostrap to the page
         let link = document.createElement('link');
-        link.href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        link.href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         link.rel = "stylesheet"
-        link.integrity = "sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-        link.crossOrigin = "anonymous"
+        let link2 = document.createElement("link")
+        link2.href = "https://getbootstrap.com/docs/5.2/assets/css/docs.css" 
+        link2.rel = "stylesheet"
         document.head.appendChild(link);
+        document.head.appendChild(link2);
     })
     return a;
 }
@@ -74,6 +76,9 @@ let hasieratu = async function (e) {
     centerTitle()
     addNav()
     addFiltros()
+
+    //Este tiene que ir último
+    addScripts()
 }
 
 function centerTitle(){
@@ -109,11 +114,11 @@ function centerTitle(){
 }
 
 function addNav(){
-    let topMargin = document.createElement("style")
-    topMargin.innerHTML= "body {padding-top: 60px;}"
-    document.head.appendChild(topMargin)
+    let style = document.createElement("style")
+    style.innerHTML= "body {padding-top: 60px;}.offcanvas-size-sm {--bs-offcanvas-width: 150px !important;} .login-button {margin-bottom: 6px; margin-right: 0px;} @media only screen and (min-width: 576px) {.login-button {margin-bottom: 0px;margin-right: 6px;}}"
+    document.head.appendChild(style)
     let navBar = document.createElement("header")
-    navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default")
+    navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default navbar-expand-sm")
     navBar.setAttribute("style", 'background-color: #008DD5;')
 
     let edicionesButton = document.createElement("button")
@@ -127,33 +132,78 @@ function addNav(){
 
     let loginButton = document.createElement("button")
     let loginRegisterCol = document.createElement("div")
-    loginButton.setAttribute("class", "btn btn-outline-dark me-end")
+    loginButton.setAttribute("class", "btn btn-outline-dark btn-block login-button")
     loginButton.setAttribute("type", "button")
     loginButton.innerHTML = "Login"
     loginButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
-    loginButton.setAttribute("style", "background-color: #F7B529; margin-right: 6px;")
+    loginButton.setAttribute("style", "background-color: #F7B529")
 
 
     let registerButton = document.createElement("button")
-    registerButton.setAttribute("class", "btn btn-outline-dark me-end")
+    registerButton.setAttribute("class", "btn btn-outline-dark")
     registerButton.setAttribute("type", "button")
     registerButton.innerHTML = "Register"
     registerButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
     registerButton.setAttribute("style", "background-color: #F7B529")
 
     loginRegisterCol.setAttribute("class", "col text-end")
+    let menuButton = document.createElement("button")
+    menuButton.setAttribute("class", "btn d-sm-none btn-outline-dark")
+    menuButton.setAttribute("type", "button")
+    menuButton.setAttribute("data-bs-toggle", "offcanvas")
+    menuButton.setAttribute("data-bs-target", "#menu")
+    menuButton.setAttribute("aria-controls", "menu")
+    menuButton.setAttribute("style", "background-color: #F7B529;")
+    let icon = document.createElement("span")
+    icon.setAttribute("class", "navbar-toggler-icon")
+    menuButton.appendChild(icon)
+    let bodyCol = document.createElement("div")
+    bodyCol.setAttribute("class", "d-grid d-sm-inline text-sm-end text-start")
+    bodyCol.appendChild(loginButton)
+    bodyCol.appendChild(registerButton)
+    let menuBody = document.createElement("div")
+    menuBody.setAttribute("class", "offcanvas-body py-0 row row-cols-1 justify-content-sm-end")
+    menuBody.appendChild(bodyCol)
+    let menuHead = document.createElement("div")
+    menuHead.setAttribute("class","offcanvas-header")
+    let offLabel = document.createElement("h2")
+    offLabel.setAttribute("id", "offLabel")
+    offLabel.setAttribute("class", "offcanvas-title")
+    offLabel.innerHTML = "Menu"
+    let offCloseButton = document.createElement("button")
+    offCloseButton.setAttribute("class", "btn-close")
+    offCloseButton.setAttribute("type", "button")
+    offCloseButton.setAttribute("data-bs-dismiss", "offcanvas")
+    offCloseButton.setAttribute("aria-label", "Close")
+    menuHead.appendChild(offLabel)
+    menuHead.appendChild(offCloseButton)
+    let menu = document.createElement("div")
+    menu.setAttribute("class", "offcanvas offcanvas-end offcanvas-size-sm")
+    menu.setAttribute("id", "menu")
+    menu.setAttribute("data-bs-scroll", "true")
+    menu.setAttribute("tabindex", "-1")
+    menu.setAttribute("aria-labelledby", "offLabel")
+    menu.setAttribute("style", "background-color: #008DD5")
+    menu.appendChild(menuHead)
+    menu.appendChild(menuBody)
 
     let containerNav = document.createElement("div")
     containerNav.setAttribute("class", "container-fluid")
     edicionesCol.appendChild(edicionesButton)
     containerNav.appendChild(edicionesCol)
-    loginRegisterCol.appendChild(loginButton)
-    loginRegisterCol.appendChild(registerButton)
+    loginRegisterCol.appendChild(menuButton)
+    loginRegisterCol.appendChild(menu)
     containerNav.appendChild(loginRegisterCol)
     navBar.appendChild(containerNav)
     document.body.appendChild(navBar)
     document.getElementsByClassName("botonEdiciones").item(0).remove()
-    
+}
+
+function addScripts(){
+
+    let bootstrapScript = document.createElement("script")
+    bootstrapScript.setAttribute("src", "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js")
+    document.head.appendChild(bootstrapScript)
 }
 
 //Activa otra vez el amosar resultados para actualizar busqueda cuando cambias los filtros
