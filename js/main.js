@@ -113,7 +113,7 @@ function addNav(){
     document.head.appendChild(topMargin)
     let navBar = document.createElement("header")
     navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default")
-    navBar.setAttribute("style", 'background-color: #008DD5;')
+    //navBar.setAttribute("style", 'background-color: #008DD5;')
 
     let edicionesButton = document.createElement("button")
     edicionesButton.setAttribute("class", "btn btn-outline-dark")
@@ -127,19 +127,19 @@ function addNav(){
     loginButton.setAttribute("type", "button")
     loginButton.innerHTML = "Login"
     loginButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
-    loginButton.style.marginLeft = "auto"
-    loginButton.style.marginRight = "10px"
+    //loginButton.style.marginLeft = "auto"
+    //loginButton.style.marginRight = "10px"
 
 
     let RegisterButton = document.createElement("button")
-    RegisterButton.setAttribute("class", "btn btn-light")
+    RegisterButton.setAttribute("class", "btn btn-dark")
     RegisterButton.setAttribute("type", "button")
     RegisterButton.innerHTML = "Register"
     RegisterButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
 
     let containerNav = document.createElement("div")
     containerNav.setAttribute("class", "container")
-    containerNav.appendChild(edicionesButton)
+    //containerNav.appendChild(edicionesButton)
     containerNav.appendChild(loginButton)
     containerNav.appendChild(RegisterButton)
     navBar.appendChild(containerNav)
