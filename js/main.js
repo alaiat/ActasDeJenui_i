@@ -35,6 +35,13 @@ async function getAllJs(scripts){
              `var urlFicha = "https://aenui.org/actas/fichas/" + articulos[indiz][0] + "_" + articulos[indiz][1] + "_" + num + ".html";`)
         }else if(name.split("/")[name.split("/").length-1] == 'urlFiles.js'){
             r = r.replaceAll('return "', 'return "https://aenui.org/actas/')
+        }else if(name.split("/")[name.split("/").length-1] == 'search.js'){
+            r = r.replace('temasBusqueda[i] = convertirPaBusqueda(articulos[i][2] + " " + articulos[i][3]);',
+            'temasBusqueda[i] = {titulo: convertirPaBusqueda(articulos[i][2]), autor: convertirPaBusqueda(articulos[i][3]), palabras: convertirPaBusqueda(articulos[i][5] + " " + articulos[i][6])}')
+            console.log(r)
+            
+            r = r.replace('\x69\x66\x20\x28\x69\x74\x65\x6D\x2E\x69\x6E\x64\x65\x78\x4F\x66\x28\x73\x74\x72\x29\x20\x21\x3D\x20\x2D\x31\x29\x0A\x09\x09\x09\x09\x6C\x6C\x69\x73\x74\x61\x2E\x70\x75\x73\x68\x28\x69\x29\x3B',
+            'titulo = true; autor=true; palabras = true; addToList = false; if(titulo && item.titulo.indexOf(str) != -1){addToList = true;} if(autor && item.autor.indexOf(str) != -1){addToList = true;} if(palabras && item.palabras.indexOf(str) != -1){addToList = true;} if(addToList){llista.push(i);}')
         }
         script.innerHTML=r
         document.head.appendChild(script)
@@ -105,13 +112,15 @@ function addNav(){
     topMargin.innerHTML= "body {padding-top: 60px;}"
     document.head.appendChild(topMargin)
     let navBar = document.createElement("header")
-    navBar.setAttribute("class", "navbar navbar-light bg-primary fixed-top navbar-default")
+    navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default")
+    navBar.setAttribute("style", 'background-color: #008DD5;')
 
     let edicionesButton = document.createElement("button")
-    edicionesButton.setAttribute("class", "btn btn-light")
+    edicionesButton.setAttribute("class", "btn btn-outline-dark")
     edicionesButton.setAttribute("type", "button")
     edicionesButton.innerHTML = "Ediciones"
     edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
+    edicionesButton.setAttribute("style", "background-color: #F7B529")
 
     let loginButton = document.createElement("button")
     loginButton.setAttribute("class", "btn btn-light")
@@ -181,5 +190,28 @@ function addFiltros() {
   
   
   
+function addNav(){
+    let topMargin = document.createElement("style")
+    topMargin.innerHTML= "body {padding-top: 60px;}"
+    document.head.appendChild(topMargin)
+    let navBar = document.createElement("header")
+    navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default")
+    navBar.setAttribute("style", 'background-color: #008DD5;')
+
+    let edicionesButton = document.createElement("button")
+    edicionesButton.setAttribute("class", "btn btn-outline-dark")
+    edicionesButton.setAttribute("type", "button")
+    edicionesButton.innerHTML = "Ediciones"
+    edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
+    edicionesButton.setAttribute("style", "background-color: #F7B529")
+
+    let containerNav = document.createElement("div")
+    containerNav.setAttribute("class", "container")
+    containerNav.appendChild(edicionesButton)
+    navBar.appendChild(containerNav)
+    document.body.appendChild(navBar)
+    document.getElementsByClassName("botonEdiciones").item(0).remove()
+    
+}
 
 window.onload=hasieratu;
