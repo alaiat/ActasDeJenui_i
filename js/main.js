@@ -114,6 +114,12 @@ function centerTitle(){
     document.body.appendChild(buscadorContainer)
 
     document.getElementById("caxaBuscar").setAttribute("class", "form-control")
+
+    //Quitar los resultados y ponerlos otra vez para que estén al final de todo
+
+    let resultaos = document.getElementById("resultaos")
+    document.getElementById("resultaos").remove()
+    document.body.appendChild(resultaos)
 }
 
 function addNav(){
