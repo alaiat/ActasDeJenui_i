@@ -81,6 +81,7 @@ let hasieratu = async function (e) {
     addNav()
     addFiltros()
     changeFichaName()
+    createEdicionesMoal()
 
     //Este tiene que ir último
     addScripts()
@@ -146,8 +147,10 @@ function addNav() {
     edicionesButton.setAttribute("class", "btn btn-outline-dark bolded")
     edicionesButton.setAttribute("type", "button")
     edicionesButton.innerHTML = "Ediciones"
-    edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
+    //edicionesButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
     edicionesButton.setAttribute("style", "background-color: #F7B529")
+    edicionesButton.setAttribute("data-bs-toggle", "modal")
+    edicionesButton.setAttribute("data-bs-target", "#edicionesModal")
     edicionesCol.setAttribute("class", "col")
 
     let loginButton = document.createElement("button")
@@ -325,6 +328,64 @@ function titleOnclick(indiz){
             elem.appendChild(container)
         }
     })
+}
+
+function createEdicionesMoal(){
+    let modal = document.createElement("div")
+    modal.setAttribute("class", "modal fade")
+    modal.setAttribute("id", "edicionesModal")
+    modal.setAttribute("tabindex", "-1")
+    modal.setAttribute("aria-labelledby", "modalTitle")
+    modal.setAttribute("aria-hidden", "true")
+
+    let modalDialog = document.createElement("div")
+    modalDialog.setAttribute("class", "modal-dialog modal-xl modal-dialog-scrollable")
+
+    let modalContent = document.createElement("div")
+    modalContent.setAttribute("class", "modal-content")
+
+    let modalHeader = document.createElement("div")
+    modalHeader.setAttribute("class", "modal-header")
+    modalHeader.setAttribute("style", "background-color: #008DD5")
+    let title = document.createElement("h1")
+    title.setAttribute("class", "modal-title fs-5 bolded")
+    title.setAttribute("id", "modalTitle")
+    title.innerHTML = "Ediciones"
+    let closeButton = document.createElement("button")
+    closeButton.setAttribute("type", "button")
+    closeButton.setAttribute("class", "btn-close")
+    closeButton.setAttribute("data-bs-dismiss", "modal")
+    closeButton.setAttribute("aria-label", "Close")
+
+    let modalBody = document.createElement("div")
+    modalBody.setAttribute("class", "modal-body")
+    //modalBody.setAttribute("style", "background-color: #008DD5")
+    let modalContainer = document.createElement("div")
+    modalContainer.setAttribute("class", "container-fluid")
+    let modalRow = document.createElement("div")
+    modalRow.setAttribute("class", "row row-cols-auto")
+
+    let ediciones = document.getElementsByClassName("botonEdicion")
+    console.log(ediciones)
+    setTimeout(() => {
+        Array.from(ediciones).forEach(elem => {
+            elem.setAttribute("data-bs-dismiss", "modal")
+            let modalCol = document.createElement("div")
+            modalCol.setAttribute("class", "col")
+            modalCol.appendChild(elem)
+            modalRow.appendChild(modalCol)
+        })
+    }, 2000)
+
+    modalContainer.appendChild(modalRow)
+    modalBody.appendChild(modalContainer)
+    modalHeader.appendChild(title)
+    modalHeader.appendChild(closeButton)
+    modalContent.appendChild(modalHeader)
+    modalContent.appendChild(modalBody)
+    modalDialog.appendChild(modalContent)
+    modal.appendChild(modalDialog)
+    document.body.appendChild(modal)
 }
 
 window.onload = hasieratu;
