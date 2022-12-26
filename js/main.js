@@ -124,12 +124,18 @@ function centerTitle() {
 
     let resultaos = document.getElementById("resultaos")
     document.getElementById("resultaos").remove()
-    document.body.appendChild(resultaos)
+    let row = document.createElement("div")
+    row.setAttribute("class", "row")
+    let col = document.createElement("div")
+    col.setAttribute("class", "col")
+    col.appendChild(resultaos)
+    row.appendChild(col)
+    buscadorContainer.appendChild(row)
 }
 
 function addNav() {
     let style = document.createElement("style")
-    style.innerHTML = "body {padding-top: 60px;}.offcanvas-size-sm {--bs-offcanvas-width: 150px !important;} .login-button {margin-bottom: 6px; margin-right: 0px;} @media only screen and (min-width: 576px) {.login-button {margin-bottom: 0px;margin-right: 6px;}}.bolded { font-weight: bold; }"
+    style.innerHTML = "body {padding-top: 60px;}.offcanvas-size-sm {--bs-offcanvas-width: 150px !important;} .login-button {margin-bottom: 6px; margin-right: 0px;} @media only screen and (min-width: 576px) {.login-button {margin-bottom: 0px;margin-right: 6px;}}.bolded { font-weight: bold; } .frameFicha {position: relative; height: 100%; width: 100%;border: none;} .autores{margin-bottom:30px}"
     document.head.appendChild(style)
     let navBar = document.createElement("header")
     navBar.setAttribute("class", "navbar navbar-light fixed-top navbar-default navbar-expand-sm")
@@ -301,9 +307,22 @@ function titleOnclick(indiz){
         numberSplit.pop()
         number = numberSplit.join('')
         if(number == indiz){
-            let ficha = document.getElementById("fich").cloneNode(true)
+            let ficha = document.getElementById("ficha")
+            if (!ficha){
+                ficha = document.getElementById("fich").cloneNode(true)
+            }
+            let container = document.createElement("div")
+            container.setAttribute("class", "container-fluid")
+            let row = document.createElement("div")
+            row.setAttribute("class", "row")
+            let col = document.createElement("div")
+            col.setAttribute("class", "col")
             ficha.setAttribute("id", "ficha")
-            elem.appendChild(ficha)
+            ficha.setAttribute("style","height:400px;")
+            col.appendChild(ficha)
+            row.appendChild(col)
+            container.appendChild(row)
+            elem.appendChild(container)
         }
     })
 }
