@@ -82,6 +82,7 @@ let hasieratu = async function (e) {
     addFiltros()
     changeFichaName()
     createEdicionesMoal()
+    loginRegisterFunction()
 
     //Este tiene que ir último
     addScripts()
@@ -96,6 +97,7 @@ function centerTitle() {
     let imageCol = document.createElement("div")
     imageCol.setAttribute("class", "col-sm-2 col-12")
     document.getElementById("alrodiu").setAttribute("class", "d-flex justify-content-center justify-content-sm-end")
+    document.getElementById("alrodiu").setAttribute("href", "aboutus")
     imageCol.appendChild(document.getElementById("alrodiu"))
 
     let buscadorCol = document.createElement("div")
@@ -160,6 +162,7 @@ function addNav() {
     loginButton.innerHTML = "Login"
     loginButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
     loginButton.setAttribute("style", "background-color: #F7B529")
+    loginButton.setAttribute("id", "login")
 
 
     let registerButton = document.createElement("button")
@@ -168,6 +171,7 @@ function addNav() {
     registerButton.innerHTML = "Register"
     registerButton.onclick = document.getElementsByClassName("botonEdiciones").item(0).onclick
     registerButton.setAttribute("style", "background-color: #F7B529")
+    registerButton.setAttribute("id", "register")
 
     loginRegisterCol.setAttribute("class", "col text-end")
     let menuButton = document.createElement("button")
@@ -386,6 +390,16 @@ function createEdicionesMoal(){
     modalDialog.appendChild(modalContent)
     modal.appendChild(modalDialog)
     document.body.appendChild(modal)
+}
+
+function loginRegisterFunction(){
+    document.getElementById("login").onclick = () => {
+        window.location = "/session/login"
+    }
+
+    document.getElementById("register").onclick = () => {
+        window.location = "/session/register"
+    }
 }
 
 window.onload = hasieratu;
