@@ -13,10 +13,7 @@ var mypassword = 'pass1'
 router.use(session(sess))
 
 /* GET users listing. */
-router.get('/:mode', function(req, res, next) {
-  console.log('aaaa')
-  res.render("session", {mode:req.params.mode});
-});
+
 
 router.get('/', (req, res, next) => {
   if (req.session.username) {
@@ -61,7 +58,13 @@ router.post('/register', (req, res, next) => {
 })
 
 router.get('/index', (req, res, next) => {
+  console.log("mereketengue")
   res.render('userIndex')
 })
+
+router.get('/:mode', function(req, res, next) {
+  console.log('aaaa')
+  res.render("session", {mode:req.params.mode});
+});
 
 module.exports = router;
