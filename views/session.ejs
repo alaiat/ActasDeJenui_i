@@ -40,16 +40,16 @@
             aria-labelledby="login-tab" tabindex="0">
             <div class="container-fluid">
                
-                <form class="form-inline" action="/login" method = "post" >
+                <form class="form-inline" action="/session/login" method = "post" >
                     <div class="row justify-content-center">
                       <div class="col-12 text-center form-group">
                         <label for="username" class="form-label mr-2">Username:</label>
-                        <input type="text" class="form-control" id="username">
+                        <input type="text" class="form-control" name = "username"id="username">
                       </div>
                       <br>
                       <div class="col-12 text-center form-group">
                         <label for="password" class="form-label mr-2">Password:</label>
-                        <input type="text" class="form-control" id="password">
+                        <input type="text" class="form-control" name = "password" id="password">
                       </div>
                       <br>
                       <div class="col-12 text-center">
@@ -63,16 +63,16 @@
             role="tabpanel" aria-labelledby="register-tab" tabindex="0">
             <div class="container-fluid">
         
-                <form class="form-inline" action="/register" method="post"  >
+                <form class="form-inline" action="/session/register" method="post"  >
                     <div class="row justify-content-center">
                       <div class="col-12 text-center form-group">
                         <label for="username" class="form-label mr-2">Username:</label>
-                        <input type="text" class="form-control" id="username">
+                        <input type="text" class="form-control" name = 'username' id="username">
                       </div>
                       <br>
                       <div class="col-12 text-center form-group">
                         <label for="password" class="form-label mr-2">Password:</label>
-                        <input type="text" class="form-control" id="password">
+                        <input type="text" class="form-control" name = 'password' id="password">
                       </div>
                       <br>
                       <div class="col-12 text-center form-group">
