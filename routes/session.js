@@ -44,7 +44,7 @@ router.post('/login', (req, res, next) => {
   if (req.body.username == myusername && req.body.password == mypassword) {
     req.session.username = req.body.username
     console.log('login ok')
-    res.redirect('/')
+    res.redirect('/session/index')
   } else {
     console.log('login fail')
     res.redirect('/session/login')
@@ -58,6 +58,10 @@ router.post('/register', (req, res, next) => {
   console.log('register ok')
   console.log(myusername)
   res.redirect('/session/login')
+})
+
+router.get('/index', (req, res, next) => {
+  res.render('userIndex')
 })
 
 module.exports = router;
