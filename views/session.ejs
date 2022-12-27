@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <ul class="nav nav-tabs align-items-center nav-size-sm" id="myTab" role="tablist" style="background-color: #008DD5;height: 55px;">
+    <ul class="nav nav-pills align-items-center" id="myTab" role="tablist" style="background-color: #008DD5;height: 55px;">
         <div class="container-fluid" style="height: 54px;">
             <div class="row" style="height: 54px;">
                 <div class="col align-self-center">
@@ -23,27 +23,27 @@
                 </div>
                 <div class="col">
                     <div class="row row-cols-auto justify-content-end" style="height: 54px;">
-                        <div class="col px-0 align-self-end">
+                        <div class="col px-0 align-self-center">
                             <li class="nav-item" role="presentation">
                                 <div class="container me-1 px-0">
                                     <% if(mode=="login" ){ %>
-                                        <button class="nav-link link-dark active fw-bold" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane"
+                                        <button class="nav-link link-dark active fw-bold orange-pill" id="login-tab" data-bs-toggle="pill" data-bs-target="#login-tab-pane"
                                             type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">Login</button>
                                     <% }else{ %>
-                                        <button class="nav-link link-dark fw-bold" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane"
+                                        <button class="nav-link link-dark fw-bold orange-pill" id="login-tab" data-bs-toggle="pill" data-bs-target="#login-tab-pane"
                                             type="button" role="tab" aria-controls="login-tab-pane" aria-selected="false">Login</button>
                                     <% } %>
                                 </div>
                             </li>
                         </div>
-                        <div class="col px-0 align-self-end">
+                        <div class="col px-0 align-self-center">
                             <li class="nav-item me-2" role="presentation">
                                 <% if(mode=="register" ){ %>
-                                    <button class="nav-link link-dark active fw-bold" id="register-tab" data-bs-toggle="tab"
+                                    <button class="nav-link link-dark active fw-bold orange-pill" id="register-tab" data-bs-toggle="pill"
                                         data-bs-target="#register-tab-pane" type="button" role="tab" aria-controls="register-tab-pane"
                                         aria-selected="true">Register</button>
                                 <% }else{ %>
-                                    <button class="nav-link link-dark fw-bold" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-tab-pane"
+                                    <button class="nav-link link-dark fw-bold orange-pill" id="register-tab" data-bs-toggle="pill" data-bs-target="#register-tab-pane"
                                         type="button" role="tab" aria-controls="register-tab-pane"
                                         aria-selected="false">Register</button>
                                 <% } %>

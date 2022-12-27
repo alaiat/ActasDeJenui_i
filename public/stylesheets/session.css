@@ -1,4 +1,8 @@
-
+.orange-pill {
+    --bs-nav-pills-link-active-bg: #F7B529;
+    border-color: #000000;
+    border-width: 10px;
+}
 
 .bolded {
     font-weight: bold;
