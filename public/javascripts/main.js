@@ -24,11 +24,16 @@ async function getInitialHTML() {
 }
 
 async function getAllJs(scripts) {
+    //console.log(scripts)
     let elem = scripts.shift()
     let name = elem.src
     name = name.split("/")
     name[2] = mainURL
+    if(name[3] == "session"){
+        name.splice(3,1)
+    }
     name = name.join('/')
+    console.log(name)
     await fetch(`http://ikasten.io:3000/${name}`).then(r => r.text())
         .then(r => {
             let script = document.createElement('script')
@@ -69,6 +74,9 @@ let hasieratu = async function (e) {
         Array.from(botones).forEach((elem) => {
             let url = elem.children[0].src.split('/')
             url[2] = "aenui.org"
+            if(url[3] == "session"){
+                url.splice(3,1)
+            }
             url.splice(3, 0, "actas")
             elem.children[0].src = url.join('/')
         })
