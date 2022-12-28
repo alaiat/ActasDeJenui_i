@@ -17,7 +17,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-outline-dark bolded" type="button" style="background-color: #F7B529" id="home">Home</button>
+                    <% if(logged){ %> 
+                        <button class="btn btn-outline-dark bolded" type="button" style="background-color: #F7B529" id="home1">Home</button>
+                    <% }else{ %> 
+                        <button class="btn btn-outline-dark bolded" type="button" style="background-color: #F7B529" id="home2">Home</button>
+                    <% } %> 
                 </div>
             </div>
         </div>
@@ -33,19 +37,19 @@
         <div class="row row-cols-1 row-cols-sm-2">
             <div class="col text-center mb-3">
                 <h2>Aitor Castaño</h2>
-                <img src="images/aitor.jpg" alt="Italian Trulli" style="max-height:200px;">
+                <img src="<%= logged ? "../images/aitor.jpg" : "images/aitor.jpg" %>" alt="Italian Trulli" style="max-height:200px;">
             </div>
             <div class="col text-center mb-3">
                 <h2>Unax Labaka</h2>
-                <img src="images/unax.jpg" alt="Italian Trulli" style="width:150px;height:200px;">
+                <img src="<%= logged ? "../images/unax.jpg" : "images/unax.jpg" %>" alt="Italian Trulli" style="width:150px;height:200px;">
             </div>
             <div class="col text-center mb-3">
                 <h2>Leire Echarri</h2>
-                <img src="images/leire.jpg" alt="Italian Trulli" style="width:200px;height:200px;">
+                <img src="<%= logged ? "../images/leire.jpg" : "images/leire.jpg" %>" alt="Italian Trulli" style="width:200px;height:200px;">
             </div>
             <div class="col text-center mb-3">
                 <h2>Alaia Torre</h2>
-                <img src="images/alaia.jpg" alt="Italian Trulli" style="width:200px;height:200px;">
+                <img src="<%= logged ? "../images/alaia.jpg" : "images/alaia.jpg" %>" alt="Italian Trulli" style="width:200px;height:200px;">
             </div>
         </div>
 

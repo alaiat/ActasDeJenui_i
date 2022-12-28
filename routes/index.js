@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/aboutus', (rq, res, next) => {
-  res.render("aboutus")
+  res.render("aboutus", {logged:false})
 })
 
 module.exports = router;

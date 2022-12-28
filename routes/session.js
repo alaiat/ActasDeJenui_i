@@ -28,6 +28,10 @@ router.get('/logout', (req, res, next) => {
   res.redirect('/session/login')
 })
 
+router.get('/aboutus', (req, res, next) => {
+  res.render('aboutus', {logged:true})
+})
+
 router.get('/login', (req, res, next) => {
   if (req.session.username) {
     res.redirect('/')
